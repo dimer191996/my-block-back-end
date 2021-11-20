@@ -14,7 +14,7 @@ export const checkUser = (req, res, next) => {
         next();
       } else {
         res.locals.user = null;
-        res.cookie("jwt", "", { maxAge: 1 });
+        res.cookie("jwt", "", { maxAge: 1, sameSite: "none", secure: true });
         // console.log(res.locals.user);
         next();
       }
