@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://www.hotseatmag.com"],
+    origin: ["http://localhost:3000","https://www.hotseatmag.com"],
   })
 );
 
