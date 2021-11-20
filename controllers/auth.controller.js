@@ -1,13 +1,13 @@
 import UserModel from "../models/user.model.js";
 import { createUserToken } from "../utils/createUserToken.util.js";
 import { signUpValidator } from "../utils/validators.util.js";
-import sgMail from "@sendgrid/mail";
+// import sgMail from "@sendgrid/mail";
 import bcrypt from "bcrypt";
 import random_name from "node-random-name";
 
 export const signup = async (req, res) => {
   const { name, email, password } = req.body;
-  console.log(email, password);
+
   try {
     const user = await UserModel.create({
       name: random_name(),
@@ -60,6 +60,8 @@ export const login = async (req, res) => {
         res.cookie("jwt", token, {
           httpOnly: true,
           maxAge: 2 * 24 * 60 * 60 * 1000,
+          sameSite: "none",
+          secure: true,
         });
         //return the authenticated user id
         res.status(200).json({ user: user._id });

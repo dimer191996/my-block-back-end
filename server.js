@@ -1,5 +1,5 @@
 import express from "express";
-import session from "express-session";
+// import session from "express-session";
 import cloudinary from "cloudinary";
 
 import cookieParser from "cookie-parser";
@@ -30,16 +30,7 @@ app.use(
   })
 );
 
-app.set("https://www.hotseatmag.com", 1); // trust first proxy
-
-app.use(
-  session({
-    secret: process.env.TOKEN_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    cookie: { secure: true, httpOnly: true, sameSite: "none" },
-  })
-);
+//
 app.use(
   express.urlencoded({
     extended: true,
@@ -69,6 +60,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
 // connect to the express server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`lestening port ${process.env.PORT}`);
 });
