@@ -26,18 +26,11 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["https://www.hotseatmag.com"],
+    origin: ["http://localhost:3000","https://www.hotseatmag.com"],
   })
 );
 
-app.use(
-  session({
-    secret: process.env.TOKEN_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    //cookie: { secure: true, httpOnly: true, sameSite: "none" },
-  })
-);
+//
 app.use(
   express.urlencoded({
     extended: true,
