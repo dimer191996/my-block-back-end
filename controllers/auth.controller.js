@@ -74,12 +74,17 @@ export const login = async (req, res) => {
       return res.status(201).json({ errors });
     }
   } catch (error) {
-    res.cookie("jwt", "", { maxAge: 1 });
+    res.cookie("jwt", "", {
+      maxAge: 1,
+      sameSite: "none",
+      secure: true,
+      path: "/",
+    });
     console.log(error);
   }
 };
 export const logout = async (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1 });
+  res.cookie("jwt", "", { maxAge: 1, sameSite: "none", secure: true });
   res.redirect("/login");
 };
 
