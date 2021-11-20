@@ -26,18 +26,16 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["http://localhost:3000", "https://www.hotseatmag.com"],
+    origin: ["https://www.hotseatmag.com/"],
   })
 );
-
-app.set("https://www.hotseatmag.com", 1); // trust first proxy
 
 app.use(
   session({
     secret: process.env.TOKEN_SECRET,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: true, httpOnly: true, sameSite: "none" },
+    //cookie: { secure: true, httpOnly: true, sameSite: "none" },
   })
 );
 app.use(
