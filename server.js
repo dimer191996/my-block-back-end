@@ -26,7 +26,7 @@ app.use(express.json());
 app.use(
   cors({
     credentials: true,
-    origin: ["https://www.hotseatmag.com/"],
+    origin: ["https://www.hotseatmag.com"],
   })
 );
 
@@ -67,6 +67,6 @@ app.use("/api/user", userRoutes);
 app.use("/api/post", postRoutes);
 
 // connect to the express server
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log(`lestening port ${process.env.PORT}`);
 });
