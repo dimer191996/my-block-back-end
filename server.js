@@ -30,14 +30,14 @@ app.use(
   })
 );
 
-app.use(
-  session({
-    secret: process.env.TOKEN_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    //cookie: { secure: true, httpOnly: true, sameSite: "none" },
-  })
-);
+// app.use(
+//   session({
+//     secret: process.env.TOKEN_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     //cookie: { secure: true, httpOnly: true, sameSite: "none" },
+//   })
+// );
 app.use(
   express.urlencoded({
     extended: true,
