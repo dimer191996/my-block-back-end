@@ -6,10 +6,10 @@ const ID = mongoose.Types.ObjectId;
 
 export const getArticleComments = async (req, res, next) => {
   const { uid } = getAuth(req.cookies["jwt"]);
-  if (!uid)
-    return res
-      .status(500)
-      .send({ message: "User is not a member yet", error: "auth" });
+  // if (!uid)
+  //   return res
+  //     .status(500)
+  //     .send({ message: "User is not a member yet", error: "auth" });
   if (!ID.isValid(req.params.postId))
     return res
       .status(400)

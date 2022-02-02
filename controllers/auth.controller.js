@@ -84,8 +84,12 @@ export const login = async (req, res) => {
   }
 };
 export const logout = async (req, res) => {
-  res.cookie("jwt", "", { maxAge: 1, sameSite: "none", secure: true });
-  res.redirect("/login");
+  res.cookie("jwt", "", {
+    maxAge: 1,
+    sameSite: "none",
+    secure: true,
+    path: "/",
+  });
 };
 
 export default { login, logout, signup };
