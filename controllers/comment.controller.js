@@ -24,7 +24,11 @@ export const getArticleComments = async (req, res, next) => {
 };
 
 export const createComment = async (req, res, next) => {
-  console.log(req.body);
+  const { uid } = getAuth(req.cookies["jwt"]);
+  if (!uid)
+    return res
+      .status(500)
+      .send({ message: "User is not a member yet", error: "auth" });
   if (!ID.isValid(req.params.id))
     return res.status(400).send({ message: "ID unknown : " + req.params.id });
   if (!req.body.body.trim()) {
